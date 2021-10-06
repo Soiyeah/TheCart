@@ -21,6 +21,6 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private int qty;
-    @ManyToOne
-    private Product product;
+//    @ManyToOne
+//    private Product product;
 }

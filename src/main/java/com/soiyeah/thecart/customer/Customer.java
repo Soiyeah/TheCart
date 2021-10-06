@@ -3,12 +3,13 @@ package com.soiyeah.thecart.customer;
 import com.soiyeah.thecart.address.Address;
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 /** Entity class */
 
 @Entity
 @Table
-@NoArgsConstructor @AllArgsConstructor @Getter @Setter @ToString
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class Customer {
 
     @Id
@@ -17,15 +18,16 @@ public class Customer {
     private String name;
     private String email;
     private String phone;
-    @OneToOne(mappedBy = "Customer")
-    private Address address;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Address> addresses;
 
     // Constructor without ID
     public Customer(String name, String email, String phone, Address address) {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.address = address;
+        this.addresses.add(address);
     }
 
 }

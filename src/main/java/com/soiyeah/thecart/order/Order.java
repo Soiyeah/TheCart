@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "order_table")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -24,11 +24,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private Date date;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Customer customer;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private Customer customer;
 //    @OneToMany
 //    private List<OrderItem> orderItems;
-    @OneToOne
-    private Payment payment;
+//    @OneToOne
+//    private Payment payment;
 
 }

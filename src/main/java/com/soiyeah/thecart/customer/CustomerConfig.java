@@ -12,10 +12,11 @@ public class CustomerConfig {
     CommandLineRunner commandLineRunner(CustomerRepository repository){
         return args -> {
 
-            Address address = new Address("25","Sagara Lane", "Egoda Uyana","10400");
-
-            Customer sohan = new Customer("Sohan", "sohan@gmail.com", "0770053513", address);
-            repository.save(sohan);
+//            Customer sohan = new Customer();
+//            Address address = new Address("25","Sagara Lane", "Egoda Uyana","10400", sohan);
+//
+//            sohan = new Customer("Sohan", "sohan@gmail.com", "0770053513", address);
+//            repository.save(sohan);
         };
     }
 
