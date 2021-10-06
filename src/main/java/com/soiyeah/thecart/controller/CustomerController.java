@@ -23,9 +23,10 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+
     // Get list of all customers
     @GetMapping
-    public List<Customer> getCustomer(){
+    public List<Customer> getCustomers(){
         return customerService.getCustomers();
     }
 

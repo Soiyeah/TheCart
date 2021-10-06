@@ -1,5 +1,6 @@
 package com.soiyeah.thecart.model;
 
+import com.soiyeah.thecart.dto.CustomerDTO;
 import com.soiyeah.thecart.model.Address;
 import lombok.*;
 import javax.persistence.*;
@@ -40,5 +41,18 @@ public class Customer {
         addresses.add(address);
     }
 
+    // Remove assigned address from customer
+    public void removeAddress(Address address){
+        addresses.remove(address);
+    }
+
+    // DTO Transformer
+    public static Customer from(CustomerDTO customerDTO){
+        Customer customer = new Customer();
+        customer.setName(customerDTO.getName());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPhone(customerDTO.getPhone());
+        return customer;
+    }
 
 }

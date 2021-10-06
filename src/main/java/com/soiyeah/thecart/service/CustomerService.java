@@ -52,6 +52,12 @@ public class CustomerService {
         return customer;
     }
 
+    public Customer removeAddressFromCustomer(Long customerId, Long addressId){
+        Customer customer = getCustomer(customerId);
+        Address address = addressService.getAddress(addressId);
+        customer.removeAddress(address);
+        return customer;
+    }
 
 
 }
