@@ -1,4 +1,4 @@
-package com.soiyeah.thecart.payment;
+package com.soiyeah.thecart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
@@ -14,12 +13,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Payment {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private Date date;
-
-
+    private int qty;
+//    @ManyToOne
+//    private Product product;
 }

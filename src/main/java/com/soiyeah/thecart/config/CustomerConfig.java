@@ -1,6 +1,6 @@
-package com.soiyeah.thecart.customer;
+package com.soiyeah.thecart.config;
 
-import com.soiyeah.thecart.address.Address;
+import com.soiyeah.thecart.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

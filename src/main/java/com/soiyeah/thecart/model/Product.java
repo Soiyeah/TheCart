@@ -1,4 +1,4 @@
-package com.soiyeah.thecart.product;
+package com.soiyeah.thecart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,14 +1,12 @@
-package com.soiyeah.thecart.address;
+package com.soiyeah.thecart.model;
 
 import lombok.*;
 import javax.persistence.*;
 
-import com.soiyeah.thecart.customer.Customer;
-
 /** Entity class*/
 
 @Entity
-@Table
+@Table(name = "Address")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -24,16 +22,15 @@ public class Address {
     private String city;
     private String postalCode;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @ManyToOne
     private Customer customer;
 
     // Constructor without ID
-    public Address(String aptNo, String street, String city, String postalCode, Customer customer) {
+    public Address(String aptNo, String street, String city, String postalCode) {
         this.aptNo = aptNo;
         this.street = street;
         this.city = city;
         this.postalCode = postalCode;
-        this.customer = customer;
+
     }
 }

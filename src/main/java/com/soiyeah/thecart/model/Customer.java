@@ -1,15 +1,19 @@
-package com.soiyeah.thecart.customer;
+package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.address.Address;
+import com.soiyeah.thecart.model.Address;
 import lombok.*;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /** Entity class */
 
 @Entity
-@Table
-@NoArgsConstructor @AllArgsConstructor @Getter @Setter
+@Table(name = "Customer")
+@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -19,8 +23,9 @@ public class Customer {
     private String email;
     private String phone;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Address> addresses;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private List<Address> addresses = new ArrayList<>();
 
     // Constructor without ID
     public Customer(String name, String email, String phone, Address address) {
@@ -29,5 +34,10 @@ public class Customer {
         this.phone = phone;
         this.addresses.add(address);
     }
+
+    public void addAddress(Address address){
+        addresses.add(address);
+    }
+
 
 }

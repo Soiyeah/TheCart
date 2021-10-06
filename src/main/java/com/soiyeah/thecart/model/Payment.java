@@ -1,13 +1,12 @@
-package com.soiyeah.thecart.orderItem;
+package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table
@@ -15,12 +14,12 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderItem {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private int qty;
-//    @ManyToOne
-//    private Product product;
+    private Date date;
+
+
 }
