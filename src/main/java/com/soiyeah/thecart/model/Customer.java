@@ -35,6 +35,7 @@ public class Customer {
         this.addresses.add(address);
     }
 
+    // Assign an address to the customer
     public void addAddress(Address address){
         addresses.add(address);
     }

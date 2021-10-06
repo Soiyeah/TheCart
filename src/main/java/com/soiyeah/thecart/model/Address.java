@@ -33,4 +33,9 @@ public class Address {
         this.postalCode = postalCode;
 
     }
+
+    public void setCustomer(Customer customer){
+        this.customer = customer;
+    }
+
 }
