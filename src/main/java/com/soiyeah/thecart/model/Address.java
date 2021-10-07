@@ -1,6 +1,6 @@
 package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.dto.AddressDTO;
+import com.soiyeah.thecart.model.dto.AddressDTO;
 import lombok.*;
 import javax.persistence.*;
 

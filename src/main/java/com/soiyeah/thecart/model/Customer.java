@@ -1,7 +1,6 @@
 package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.dto.CustomerDTO;
-import com.soiyeah.thecart.model.Address;
+import com.soiyeah.thecart.model.dto.CustomerDTO;
 import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;

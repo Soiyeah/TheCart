@@ -1,4 +1,4 @@
-package com.soiyeah.thecart.dto;
+package com.soiyeah.thecart.model.dto;
 
 import com.soiyeah.thecart.model.Address;
 import lombok.Data;

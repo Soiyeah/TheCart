@@ -5,6 +5,8 @@ import com.soiyeah.thecart.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AddressService {
 
@@ -23,6 +25,10 @@ public class AddressService {
 
     public Address getAddress(Long id){
         return addressRepository.findById(id).orElseThrow();
+    }
+
+    public List<Address> getAddresses(){
+        return addressRepository.findAll();
     }
 
     public Address deleteAddress(Long id){
