@@ -1,6 +1,6 @@
 package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.model.dto.CustomerDTO;
+import com.soiyeah.thecart.model.dto.CustomerDto;
 import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Customer {
     }
 
     // DTO Transformer
-    public static Customer from(CustomerDTO customerDTO){
+    public static Customer from(CustomerDto customerDTO){
         Customer customer = new Customer();
         customer.setName(customerDTO.getName());
         customer.setEmail(customerDTO.getEmail());

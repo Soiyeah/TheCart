@@ -1,7 +1,9 @@
 package com.soiyeah.thecart.controller;
 
-import com.soiyeah.thecart.model.dto.AddressDTO;
+import com.soiyeah.thecart.model.Customer;
+import com.soiyeah.thecart.model.dto.AddressDto;
 import com.soiyeah.thecart.model.Address;
+import com.soiyeah.thecart.model.dto.CustomerDto;
 import com.soiyeah.thecart.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,16 +24,24 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+    @GetMapping(value = "{id}")
+    public ResponseEntity<AddressDto> getAddress(@PathVariable final Long id){
+        Address address = addressService.getAddress(id);
+        return new ResponseEntity<>(AddressDto.from(address),HttpStatus.OK);
+    }
+
     @GetMapping
-    public ResponseEntity<List<AddressDTO>> getAddresses(){
+    public ResponseEntity<List<AddressDto>> getAddresses(){
         List<Address> addresses = addressService.getAddresses();
-        List<AddressDTO> addressesDto = addresses.stream().map(AddressDTO::from).collect(Collectors.toList());
+        List<AddressDto> addressesDto = addresses.stream().map(AddressDto::from).collect(Collectors.toList());
         return new ResponseEntity<>(addressesDto, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<AddressDTO> addAddress(@RequestBody AddressDTO addressDTO){
+    public ResponseEntity<AddressDto> addAddress(@RequestBody AddressDto addressDTO){
         Address address = addressService.addAddress(Address.from(addressDTO));
-        return new ResponseEntity<>(AddressDTO.from(address), HttpStatus.OK);
+        return new ResponseEntity<>(AddressDto.from(address), HttpStatus.OK);
     }
+
+
 }

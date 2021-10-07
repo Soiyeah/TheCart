@@ -1,6 +1,6 @@
 package com.soiyeah.thecart.model;
 
-import com.soiyeah.thecart.model.dto.AddressDTO;
+import com.soiyeah.thecart.model.dto.AddressDto;
 import lombok.*;
 import javax.persistence.*;
 
@@ -39,8 +39,8 @@ public class Address {
         this.customer = customer;
     }
 
-    // AddressDTO to Address transformer
-    public static Address from(AddressDTO addressDTO){
+    // AddressDto to Address transformer
+    public static Address from(AddressDto addressDTO){
         Address address = new Address();
         address.setAptNo(addressDTO.getAptNo());
         address.setStreet(addressDTO.getStreet());

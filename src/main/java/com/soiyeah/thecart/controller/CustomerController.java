@@ -1,6 +1,6 @@
 package com.soiyeah.thecart.controller;
 
-import com.soiyeah.thecart.model.dto.CustomerDTO;
+import com.soiyeah.thecart.model.dto.CustomerDto;
 import com.soiyeah.thecart.service.CustomerService;
 import com.soiyeah.thecart.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,22 +30,29 @@ public class CustomerController {
 
     // Get list of all customers
     @GetMapping
-    public ResponseEntity<List<CustomerDTO>> getCustomers(){
+    public ResponseEntity<List<CustomerDto>> getCustomers(){
         List<Customer> customers = customerService.getCustomers();
-        List<CustomerDTO> customersDto = customers.stream().map(CustomerDTO::from).collect(Collectors.toList());
+        List<CustomerDto> customersDto = customers.stream().map(CustomerDto::from).collect(Collectors.toList());
         return new ResponseEntity<>(customersDto, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<CustomerDTO> addCustomer(@RequestBody CustomerDTO customerDto){
+    public ResponseEntity<CustomerDto> addCustomer(@RequestBody CustomerDto customerDto){
         Customer customer = customerService.addCustomer(Customer.from(customerDto));
-        return new ResponseEntity<>(CustomerDTO.from(customer), HttpStatus.OK);
+        return new ResponseEntity<>(CustomerDto.from(customer), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable final long id){
+    public ResponseEntity<CustomerDto> deleteCustomer(@PathVariable final long id){
         Customer customer = customerService.deleteCustomer(id);
-        return new ResponseEntity<>(CustomerDTO.from(customer), HttpStatus.OK);
+        return new ResponseEntity<>(CustomerDto.from(customer), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "{customerId}/addresses/{addressId}/add")
+    public ResponseEntity<CustomerDto> addAddressToCustomer(@PathVariable final Long customerId,
+                                                            @PathVariable final Long addressId){
+        Customer customer = customerService.addAddressToCustomer(customerId, addressId);
+        return new ResponseEntity<>(CustomerDto.from(customer),HttpStatus.OK);
     }
 
 }

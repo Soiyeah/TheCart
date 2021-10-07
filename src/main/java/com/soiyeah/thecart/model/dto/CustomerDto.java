@@ -7,24 +7,25 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public class CustomerDTO {
+public class CustomerDto {
 
     private Long id;
     private String name;
     private String email;
     private String phone;
-    private List<Address> addresses = new ArrayList<>();
+    private List<AddressDto> addressesDto = new ArrayList<>();
 
-    public static CustomerDTO from(Customer customer){
-        CustomerDTO customerDTO = new CustomerDTO();
+    public static CustomerDto from(Customer customer){
+        CustomerDto customerDTO = new CustomerDto();
         customerDTO.setId(customer.getId());
         customerDTO.setName(customer.getName());
         customerDTO.setEmail(customer.getEmail());
         customerDTO.setPhone(customer.getPhone());
-        customerDTO.setAddresses(customer.getAddresses());
+        customerDTO.setAddressesDto(customer.getAddresses().stream().map(AddressDto::from).collect(Collectors.toList()));
         return customerDTO;
     }
 

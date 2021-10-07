@@ -5,6 +5,7 @@ import com.soiyeah.thecart.repository.CustomerRepository;
 import com.soiyeah.thecart.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -45,6 +46,7 @@ public class CustomerService {
     }
 
 
+    @Transactional
     public Customer addAddressToCustomer(Long customerId, Long addressId){
         Customer customer = getCustomer(customerId);
         Address address = addressService.getAddress(addressId);
@@ -52,6 +54,7 @@ public class CustomerService {
         return customer;
     }
 
+    @Transactional
     public Customer removeAddressFromCustomer(Long customerId, Long addressId){
         Customer customer = getCustomer(customerId);
         Address address = addressService.getAddress(addressId);
