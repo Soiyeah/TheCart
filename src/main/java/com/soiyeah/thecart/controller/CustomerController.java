@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "api/v1/customer")
+@CrossOrigin("*")
 public class CustomerController {
 
     private static final Logger LOGGER = Logger.getLogger(Customer.class.getName());
@@ -36,6 +37,12 @@ public class CustomerController {
         return new ResponseEntity<>(customersDto, HttpStatus.OK);
     }
 
+    @GetMapping(value = "{id}")
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable final Long id){
+        Customer customer = customerService.getCustomer(id);
+        return new ResponseEntity<>(CustomerDto.from(customer),HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<CustomerDto> addCustomer(@RequestBody CustomerDto customerDto){
         Customer customer = customerService.addCustomer(Customer.from(customerDto));
@@ -43,7 +50,7 @@ public class CustomerController {
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<CustomerDto> deleteCustomer(@PathVariable final long id){
+    public ResponseEntity<CustomerDto> deleteCustomer(@PathVariable final Long id){
         Customer customer = customerService.deleteCustomer(id);
         return new ResponseEntity<>(CustomerDto.from(customer), HttpStatus.OK);
     }
